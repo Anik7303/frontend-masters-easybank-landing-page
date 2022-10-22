@@ -1,0 +1,39 @@
+.has-fade {
+  visibility: hidden;
+}
+
+@keyframes fade-in {
+  0% {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  1% {
+    visibility: visible;
+  }
+
+  100% {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  to {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+.fade-in {
+  animation: fade-in $animation ease-in-out forwards;
+}
+
+.fade-out {
+  animation: fade-out $animation ease-in-out forwards;
+}

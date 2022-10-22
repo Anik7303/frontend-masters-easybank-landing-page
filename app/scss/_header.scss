@@ -1,6 +1,37 @@
 .header {
+  // Hamburger Open Styles
+  &.open {
+    .header__toggle {
+      & > span:first-child {
+        transform: rotate(45deg);
+      }
+  
+      & > span:nth-child(2) {
+        opacity: 0;
+      }
+  
+      & > span:last-child {
+        transform: rotate(-45deg);
+      }
+    }
+  }
+
+  .overlay {
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: $darkBlue;
+    background: linear-gradient(to bottom, $darkBlue, transparent);
+  }
+
   nav {
-    padding: 1.0625rem 1.5rem;
+    position: relative;
+    background-color: $white;
+    padding-top: 1.0625rem;
+    padding-bottom: 1.0625rem;
   }
 
   &__logo {
@@ -10,16 +41,36 @@
     }
   }
 
-  &__menu { // Mobile Menu
+  &__toggle { // Mobile Menu
     & > span {
       display: block;
       width: 26px;
       height: 2px;
       background-color: $darkBlue;
+      transition: all $animation ease-in-out;
+      transform-origin: 3px 1px;
 
       &:not(:last-child) {
-        margin-bottom: 3px;
+        margin-bottom: 5px;
       }
+    }
+  }
+
+  &__menu {
+    position: absolute;
+    width: calc(100% - 3rem);
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: $white;
+    margin-top: 1.5rem;
+    padding: 1.625rem;
+    border-radius: 5px;
+
+    a {
+      display: block;
+      padding: 0.625rem;
+      color: $darkBlue;
+      text-align: center;
     }
   }
 
@@ -28,7 +79,7 @@
       position: relative;
       font-size: $font-sm;
       color: $grayishBlue;
-      transition: color 300ms ease-in-out;
+      transition: color $animation ease-in-out;
 
       &:not(:last-child) {
         margin-right: 32px;
@@ -45,7 +96,7 @@
         bottom: -30px;
         background-image: linear-gradient(to right, $limeGreen, $brightCyan);
         opacity: 0;
-        transition: opacity 300ms ease-in-out;
+        transition: opacity $animation ease-in-out;
       }
 
       &:hover {
@@ -64,7 +115,7 @@
     font-size: $font-sm;
     color: $white;
     opacity: 1;
-    transition: opacity 300ms ease-in-out;
+    transition: opacity $animation ease-in-out;
 
     &:hover {
       opacity: 0.75;
